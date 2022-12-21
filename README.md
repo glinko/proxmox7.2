@@ -9,3 +9,4 @@ sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/
 grep -n -B 1 'No valid sub' /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 apt-get install fail2ban -y
 systemctl start fail2ban
+apt-get install mc -y
