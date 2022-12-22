@@ -15,6 +15,11 @@ systemctl start fail2ban
 
   
   #GUI
+  
   #certificates from lets encrypt
+pvenode acme account register default mbdsiotfl@gmail.com
+pvenode config set --acme domains=node <>.cleverminers.com
+pvenode acme cert order
+  
   #wipe disks
   #install ceph
