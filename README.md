@@ -9,7 +9,6 @@ sed -Ezi.bak "s/(Ext.Msg.show\(\{\s+title: gettext\('No valid sub)/void\(\{ \/\/
 grep -n -B 1 'No valid sub' /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
 apt-get install fail2ban -y
 apt-get install mc -y
-echo -e "\r\n[proxmox]\r\nenabled = true\r\nport = https,http,8006\r\nfilter = proxmox\r\nlogpath = /var/log/proxmox_login_ban.log\r\nmaxretry = 3\r\nfindtime = 3600\r\nbantime = 103600" >> /etc/fail2ban/jail.conf
+echo -e "\r\n[proxmox]\r\nenabled = true\r\nport = https,http,8006\r\nfilter = proxmox\r\nlogpath = /var/log/daemon.log\r\nmaxretry = 3\r\nfindtime = 3600\r\nbantime = 103600" >> /etc/fail2ban/jail.conf
 echo -e "[Definition]\r\nfailregex = pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*\r\nignoreregex =" > /etc/fail2ban/filter.d/proxmox.conf 
-echo "#proxmox_login_ban.log" > /var/log/proxmox_login_ban.log
 systemctl start fail2ban
