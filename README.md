@@ -12,6 +12,8 @@ apt-get install mc -y
 echo -e "\r\n[proxmox]\r\nenabled = true\r\nport = https,http,8006\r\nfilter = proxmox\r\nlogpath = /var/log/daemon.log\r\nmaxretry = 3\r\nfindtime = 3600\r\nbantime = 103600" >> /etc/fail2ban/jail.conf
 echo -e "[Definition]\r\nfailregex = pvedaemon\[.*authentication failure; rhost=<HOST> user=.* msg=.*\r\nignoreregex =" > /etc/fail2ban/filter.d/proxmox.conf 
 systemctl start fail2ban
+systemctl restart fail2ban
+fail2ban-client status proxmox
 
   
   #GUI
